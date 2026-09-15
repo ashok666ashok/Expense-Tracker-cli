@@ -1,2 +1,2 @@
-# Expense-Tracker-cli-a
+# Expense-Tracker-cli
 command line interface to track expense
