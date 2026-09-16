@@ -1,15 +1,15 @@
 # Expense-Tracker-cli
-command line interface to track expense
+command line interface to track expense </br>
 
 ## Tech-stack
-Nodejs
+Nodejs </br>
 Typescript
 
 ## Installation 
-git clone https://github.com/ashok666ashok/Expense-Tracker-cli
+git clone https://github.com/ashok666ashok/Expense-Tracker-cli </br>
 npm i </br>
-npm i commander,tsx,typescript
-run this command 
+npm i commander,tsx,typescript </br>
+run this command:
 ``` 
     npx tsx main.ts [operation]
 
