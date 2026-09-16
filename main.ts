@@ -59,7 +59,12 @@ function main(){
             expenses.forEach((expense)=>{
                 summary += expense.amount;
             })
-            console.log(`# Total expense: $${summary}`)
+            if(month != undefined && month >= 1 && month <= 12){
+                const months:Array<string> = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                console.log(`# Total expense for ${months[month-1]}: $${summary}`)
+            }else{
+                console.log(`# Total expense: $${summary}`)
+            }
             process.exit(0)
         }else{
             console.log("unable to get summary.\nPlease restart the program.")
