@@ -16,17 +16,17 @@ run this command(below):
 ```
 
 ## Operation
-    ``` 
+``` 
         add --description <string> --amount <number> (to add expense)
         delete --id <number> (to delete expense with expense ID)
         summary (to show total expense)
         summary --month <number> (to show the total expense of specified month)
         list (to list all expenses)
-    ```
+```
 ## help
-        ```
+```
             npx tsx main.ts [operation] --help
-        ```
+```
 
 project inspired by roadmap.sh [visit roadmap.sh]`https://roadmap.sh/projects/expense-tracker`
 
