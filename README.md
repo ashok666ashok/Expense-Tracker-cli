@@ -9,11 +9,11 @@ Typescript
 git clone https://github.com/ashok666ashok/Expense-Tracker-cli </br>
 npm i </br>
 npm i commander,tsx,typescript </br>
-run this command:
-``` 
-    npx tsx main.ts [operation]
+run this command(below):
+    ```
+        npx tsx main.ts [operation]
 
-```
+    ```
 
 ## Operation
     ``` 
