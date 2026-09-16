@@ -28,7 +28,7 @@ run this command(below):
             npx tsx main.ts [operation] --help
 ```
 
-project inspired by roadmap.sh [visit roadmap.sh]`https://roadmap.sh/projects/expense-tracker`
+project inspired by roadmap.sh [visit roadmap.sh] https://roadmap.sh/projects/expense-tracker
 
 
 
