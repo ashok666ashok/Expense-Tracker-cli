@@ -7,7 +7,7 @@ Typescript
 
 ## Installation 
 git clone https://github.com/ashok666ashok/Expense-Tracker-cli
-npm i 
+npm i </br>
 npm i commander,tsx,typescript
 run this command 
 ``` 
