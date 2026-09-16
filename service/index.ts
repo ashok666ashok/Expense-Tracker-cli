@@ -1,55 +1,67 @@
-import { getUnpackedSettings } from 'node:http2';
 import { nextId, saveExpense } from '../helper/index.ts';
 import { Expense } from '../interface/index.ts';
 import { isFileExists,createFile,readFile } from '../utils/index.ts';
-import { parseArgs } from 'node:util';
 
 const DB_PATH = 'datas.json';
  function configure():boolean{
     if(!isFileExists(DB_PATH)){
         return createFile(DB_PATH)
     }
-    return true
+    return true;
     
 }
-export function addExpense():boolean{
+export function addExpense(description:string,amount:number):boolean{
     if(!configure()){
-        console.log("please restart the program...")
-        return false
+        console.log("please restart the program...");
+        return false;
     }else{
-        let description:string = "";
-        let amount:number = 0;
-        const args = process.argv.slice(3)
-        if(args[0]==="--description"){
-            description = args[1]  
-        }else{
-            return false
-        }
-        if(args[2]==="--amount"){
-            amount = Number(args[3])
-        }else{
-            return false
-        }
-        if(description === ""){
-            return false
-        }
-        if(isNaN(amount)){
-            return false
-        }
-        const data:Array<Expense>= JSON.parse(readFile(DB_PATH))
-        const id:number = nextId(data)
-        const task:Expense={
+        const data=listExpenses()
+        if(Array.isArray(data)) {
+            const id:number = nextId(data)
+            const task:Expense={
             id:id,
             description:description,
             amount:amount,
             createdAt:new Date().toLocaleString(),
             updatedAt:undefined
-        }
-        data.push(task)
-        if(saveExpense(DB_PATH,data)){
-            return true
-        }else{
-            return false
-        }
+            }
+            data.push(task)
+            if(saveExpense(DB_PATH,data)){
+                return true
+            }else{
+                return false
+            }
+        } else {
+           return false; 
+        }   
     }
+}
+
+export function deleteExpense(id:number):boolean{
+    const datas:Array<Expense> = JSON.parse(readFile(DB_PATH))
+    const idx = datas.findIndex((data)=>data.id===id)
+    if(idx != -1){
+        datas.splice(idx,1)
+        return saveExpense(DB_PATH,datas)
+    }else{
+        return false
+    }
+}
+
+export function listExpenses(month?:number):Array<Expense>|boolean{
+    try {
+        const datas:Array<Expense> = JSON.parse(readFile(DB_PATH))
+        if(month !== undefined && month >= 1 && month <= 12){
+            const expenses:Array<Expense> = datas.filter((data)=>{
+                const createdMonth:number = new Date(data.createdAt).getMonth() + 1
+                return createdMonth === month
+            })
+            return expenses
+        }else{
+            return datas;
+        }
+    } catch (error) {
+        return false;
+    }
+    
 }
